@@ -14,6 +14,8 @@ float temperatureA;
 float humidityA;
 float temperatureB;
 float pressureB;
+float moistureC;
+float watermarkC;
 
 bool ledBuiltin;
 
@@ -24,6 +26,8 @@ void initProperties()
     ArduinoCloud.addProperty(humidityA, READ, ON_CHANGE, NULL);
     ArduinoCloud.addProperty(temperatureB, READ, ON_CHANGE, NULL);
     ArduinoCloud.addProperty(pressureB, READ, ON_CHANGE, NULL);
+    ArduinoCloud.addProperty(moistureC, READ, ON_CHANGE, NULL);
+    ArduinoCloud.addProperty(watermarkC, READ, ON_CHANGE, NULL);
 
     ArduinoCloud.addProperty(ledBuiltin, READWRITE, ON_CHANGE, onLedBuiltinChange);
 }
