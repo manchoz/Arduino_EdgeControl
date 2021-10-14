@@ -57,6 +57,7 @@ void setup()
     Power.on(PWR_MKR1);
     Power.on(PWR_MKR2);
 
+    // Wait for MKRs to power up
     delay(5000);
 
     if (!HTS.begin()) {
@@ -70,7 +71,6 @@ void setup()
             ;
     }
 
-    // delay(10000);
     // Init the I2C bus
     Wire.begin();
     delay(500);
@@ -133,7 +133,7 @@ void rpcGetProperties()
         // (void*)deviceID.c_str(), deviceID.length(), // arguments
         nullptr, 0, // arguments
         buffer, bufferLen, // returns
-        true, 1000, 3000); // parameters
+        true, 1000, 1000); // parameters
 
     if (ret == 0) {
         Debug.print(DBG_ERROR, "%s", "RPC Error");
@@ -168,7 +168,7 @@ void rpcSetProperties()
     auto ret = rpc.call("setProperties",
         (void*)jsonStr.c_str(), jsonStr.length(), // arguments
         nullptr, 0, // returns
-        false, 1000, 3000); // parameters
+        false, 1000, 1000); // parameters
 }
 
 void getSensors()
